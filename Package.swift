@@ -14,7 +14,7 @@ let package = Package(
     dependencies: [
         .package(url: "https://github.com/adjust/ios_sdk.git", exact: "5.0.1"),
         .package(url: "https://github.com/tapp-so/Tapp-Networking-iOS.git", exact: "1.0.8"),
-        .package(url: "https://github.com/tapp-so/Tapp-iOS.git", exact: "1.0.5"),
+        .package(url: "https://github.com/tapp-so/Tapp-iOS.git", exact: "1.0.6"),
     ],
 
     targets: [

@@ -1,5 +1,4 @@
 {
-  "originHash" : "058d3ec395af896c0e9326148e7ba55b04cbf87457aa9b7418bf87bac9df7bd0",
   "pins" : [
     {
       "identity" : "adjust_signature_sdk",
@@ -24,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tapp-so/Tapp-iOS.git",
       "state" : {
-        "revision" : "9065b2cdfe61ecad54f9bc1108368ef7ca20b070",
-        "version" : "1.0.5"
+        "revision" : "7ee7d1ea392877771db56366c38934b5e984f18e",
+        "version" : "1.0.6"
       }
     },
     {
@@ -38,5 +37,5 @@
       }
     }
   ],
-  "version" : 3
+  "version" : 2
 }

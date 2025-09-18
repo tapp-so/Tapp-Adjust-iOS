@@ -1,0 +1,42 @@
+{
+  "originHash" : "058d3ec395af896c0e9326148e7ba55b04cbf87457aa9b7418bf87bac9df7bd0",
+  "pins" : [
+    {
+      "identity" : "adjust_signature_sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adjust/adjust_signature_sdk.git",
+      "state" : {
+        "revision" : "a84f08b41f7e38624815816f6e93cadc9ea22a92",
+        "version" : "3.47.0"
+      }
+    },
+    {
+      "identity" : "ios_sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/adjust/ios_sdk.git",
+      "state" : {
+        "revision" : "c419718364e9f360c602a17a64b91c591f33fe6a",
+        "version" : "5.0.1"
+      }
+    },
+    {
+      "identity" : "tapp-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tapp-so/Tapp-iOS.git",
+      "state" : {
+        "revision" : "9065b2cdfe61ecad54f9bc1108368ef7ca20b070",
+        "version" : "1.0.5"
+      }
+    },
+    {
+      "identity" : "tapp-networking-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/tapp-so/Tapp-Networking-iOS.git",
+      "state" : {
+        "revision" : "811df796263f3bbe2b9adbc5a26df967943166a9",
+        "version" : "1.0.8"
+      }
+    }
+  ],
+  "version" : 3
+}

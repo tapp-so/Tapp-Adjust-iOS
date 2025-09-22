@@ -6,7 +6,7 @@
 import Foundation
 import AdjustSdk
 import TappNetworking
-import Tapp
+import TappCore
 
 final class AdjustAffiliateService: AdjustServiceProtocol {
     fileprivate(set) var isInitialized = false

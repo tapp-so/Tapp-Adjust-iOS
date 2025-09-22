@@ -10,7 +10,7 @@
 import Foundation
 import AdjustSdk
 import TappNetworking
-import Tapp
+import TappCore
 
 protocol AdjustServiceProtocol: AffiliateServiceProtocol {
     func set(deferredLinkDelegate: DeferredLinkDelegate)

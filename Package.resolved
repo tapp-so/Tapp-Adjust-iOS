@@ -19,12 +19,12 @@
       }
     },
     {
-      "identity" : "tapp-ios",
+      "identity" : "tapp-core",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/tapp-so/Tapp-iOS.git",
+      "location" : "https://github.com/tapp-so/Tapp-Core.git",
       "state" : {
-        "revision" : "7ee7d1ea392877771db56366c38934b5e984f18e",
-        "version" : "1.0.6"
+        "revision" : "b55e1f50ca1370abf6133c1a4a56a92a6e4e5413",
+        "version" : "1.0.7"
       }
     },
     {

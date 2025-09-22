@@ -1,5 +1,7 @@
 import AdjustSdk
-import Tapp
+import TappCore
+
+public typealias Tapp = TappCore
 
 extension Tapp {
 

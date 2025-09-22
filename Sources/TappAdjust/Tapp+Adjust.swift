@@ -1,8 +1,7 @@
 import AdjustSdk
-import TappCore
+import Tapp
 import TappNetworking
 
-public typealias Tapp = TappCore
 public typealias Affiliate = TappNetworking.Affiliate
 public typealias AffiliateURLConfiguration = TappNetworking.AffiliateURLConfiguration
 public typealias DeferredLinkDelegate = TappNetworking.DeferredLinkDelegate

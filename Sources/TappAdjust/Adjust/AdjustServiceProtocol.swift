@@ -1,16 +1,7 @@
-//
-//  AdjustSpecificService.swift
-//  Tapp
-//
-//  Created by Nikolaos Tseperkas on 11/11/24.
-//
-
-// AdjustSpecificService.swift
-
 import Foundation
 import AdjustSdk
 import TappNetworking
-import TappCore
+import Tapp
 
 protocol AdjustServiceProtocol: AffiliateServiceProtocol {
     func set(deferredLinkDelegate: DeferredLinkDelegate)

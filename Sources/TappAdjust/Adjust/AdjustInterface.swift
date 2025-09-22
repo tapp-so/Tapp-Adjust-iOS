@@ -1,7 +1,7 @@
 import Foundation
 import AdjustSdk
 import TappNetworking
-import TappCore
+import Tapp
 
 protocol AdjustInterfaceProtocol: AnyObject {
     var deferredLinkDelegate: DeferredLinkDelegate? { get }

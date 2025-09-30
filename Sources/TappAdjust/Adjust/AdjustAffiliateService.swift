@@ -1,8 +1,3 @@
-//
-//  AdjustAffiliateService.swift
-//
-//  Created by Nikolaos Tseperkas on 28/9/24.
-//
 import Foundation
 import AdjustSdk
 import TappNetworking

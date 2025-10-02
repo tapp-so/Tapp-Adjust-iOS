@@ -20,7 +20,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func getAdjustAttribution(completion: @escaping (AdjustAttribution?) -> Void) {
+    static func getAdjustAttribution(completion: @escaping (AdjustAttribution?) -> Void) {
         instance.getAdjustAttribution(completion: completion)
     }
 
@@ -33,7 +33,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustGdprForgetMe() {
+    static func adjustGdprForgetMe() {
         instance.adjustGdprForgetMe()
     }
 
@@ -43,7 +43,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustTrackThirdPartySharing(isEnabled: Bool) {
+    static func adjustTrackThirdPartySharing(isEnabled: Bool) {
         instance.adjustTrackThirdPartySharing(isEnabled: isEnabled)
     }
 
@@ -53,7 +53,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustTrackAdRevenue(source: String,
+    static func adjustTrackAdRevenue(source: String,
                                      revenue: Double,
                                      currency: String) {
         instance.adjustTrackAdRevenue(source: source,
@@ -71,7 +71,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustSetPushToken(token: String) {
+    static func adjustSetPushToken(token: String) {
         instance.adjustSetPushToken(token: token)
     }
 
@@ -81,7 +81,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustGetAdid(completion: @escaping (String?) -> Void) {
+    static func adjustGetAdid(completion: @escaping (String?) -> Void) {
         instance.adjustGetAdid(completion: completion)
     }
 
@@ -94,7 +94,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustGetIdfa(completion: @escaping (String?) -> Void) {
+    static func adjustGetIdfa(completion: @escaping (String?) -> Void) {
         instance.adjustGetIdfa(completion: completion)
     }
 
@@ -107,7 +107,7 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustEnable() {
+    static func adjustEnable() {
         instance.adjustEnable()
     }
 
@@ -116,7 +116,8 @@ public extension Tapp {
         adjustService.enable()
     }
 
-    @objc public static func adjustDisable() {
+    @objc
+    static func adjustDisable() {
         instance.adjustDisable()
     }
 
@@ -125,7 +126,8 @@ public extension Tapp {
         adjustService.disable()
     }
 
-    @objc public static func adjustIsEnabled(completion: @escaping (NSNumber) -> Void) {
+    @objc
+    static func adjustIsEnabled(completion: @escaping (NSNumber) -> Void) {
         instance.adjustIsEnabled(completion: completion)
     }
 
@@ -143,7 +145,8 @@ public extension Tapp {
         }
     }
 
-    @objc public static func adjustSwitchToOfflineMode() {
+    @objc
+    static func adjustSwitchToOfflineMode() {
         instance.adjustSwitchToOfflineMode()
     }
 
@@ -152,7 +155,8 @@ public extension Tapp {
         adjustService.switchToOfflineMode()
     }
 
-    @objc public static func adjustSwitchBackToOnlineMode() {
+    @objc
+    static func adjustSwitchBackToOnlineMode() {
         instance.adjustSwitchBackToOnlineMode()
     }
 
@@ -161,7 +165,8 @@ public extension Tapp {
         adjustService.switchBackToOnlineMode()
     }
 
-    @objc public static func adjustSdkVersion(completion: @escaping (String?) -> Void) {
+    @objc
+    static func adjustSdkVersion(completion: @escaping (String?) -> Void) {
         instance.adjustSdkVersion(completion: completion)
     }
 
@@ -173,7 +178,8 @@ public extension Tapp {
         adjustService.sdkVersion(completion: completion)
     }
 
-    @objc public static func adjustConvert(universalLink: URL, with scheme: String) -> URL? {
+    @objc
+    static func adjustConvert(universalLink: URL, with scheme: String) -> URL? {
         instance.adjustConvert(universalLink: universalLink, with: scheme)
     }
 
@@ -182,7 +188,8 @@ public extension Tapp {
         return adjustService.convert(universalLink: universalLink, with: scheme)
     }
 
-    @objc public static func adjustAddGlobalCallbackParameter(_ parameter: String, key: String) {
+    @objc
+    static func adjustAddGlobalCallbackParameter(_ parameter: String, key: String) {
         instance.adjustAddGlobalCallbackParameter(parameter, key: key)
     }
 
@@ -191,7 +198,8 @@ public extension Tapp {
         adjustService.addGlobalCallbackParameter(parameter, key: key)
     }
 
-    @objc public static func adjustRemoveGlobalCallbackParameter(for key: String) {
+    @objc
+    static func adjustRemoveGlobalCallbackParameter(for key: String) {
         instance.adjustRemoveGlobalCallbackParameter(for: key)
     }
     
@@ -200,7 +208,8 @@ public extension Tapp {
         adjustService.removeGlobalCallbackParameter(for: key)
     }
 
-    @objc public static func adjustRemoveGlobalCallbackParameters() {
+    @objc
+    static func adjustRemoveGlobalCallbackParameters() {
         instance.adjustRemoveGlobalCallbackParameters()
     }
 
@@ -209,7 +218,8 @@ public extension Tapp {
         adjustService.removeGlobalCallbackParameters()
     }
 
-    @objc public static func adjustAddGlobalPartnerParameter(_ parameter: String, key: String) {
+    @objc
+    static func adjustAddGlobalPartnerParameter(_ parameter: String, key: String) {
         instance.adjustAddGlobalPartnerParameter(parameter, key: key)
     }
 
@@ -218,7 +228,8 @@ public extension Tapp {
         adjustService.addGlobalPartnerParameter(parameter, key: key)
     }
 
-    @objc public static func adjustRemoveGlobalPartnerParameter(for key: String) {
+    @objc
+    static func adjustRemoveGlobalPartnerParameter(for key: String) {
         instance.adjustRemoveGlobalPartnerParameter(for: key)
     }
 
@@ -227,7 +238,8 @@ public extension Tapp {
         adjustService.removeGlobalPartnerParameter(for: key)
     }
 
-    @objc public static func adjustRemoveGlobalPartnerParameters() {
+    @objc
+    static func adjustRemoveGlobalPartnerParameters() {
         instance.adjustRemoveGlobalPartnerParameters()
     }
 
@@ -236,7 +248,8 @@ public extension Tapp {
         adjustService.removeGlobalPartnerParameters()
     }
 
-    @objc public static func adjustTrackMeasurementConsent(_ consent: Bool) {
+    @objc
+    static func adjustTrackMeasurementConsent(_ consent: Bool) {
         instance.adjustTrackMeasurementConsent(consent)
     }
 
@@ -245,7 +258,8 @@ public extension Tapp {
         adjustService.trackMeasurementConsent(consent)
     }
 
-    @objc public static func adjustTrackAppStoreSubscription(_ subscription: AdjustAppStoreSubscription) {
+    @objc
+    static func adjustTrackAppStoreSubscription(_ subscription: AdjustAppStoreSubscription) {
         instance.adjustTrackAppStoreSubscription(subscription)
     }
 
@@ -254,7 +268,8 @@ public extension Tapp {
         adjustService.trackAppStoreSubscription(subscription)
     }
 
-    @objc public static func adjustRequestAppTrackingAuthorization(completionHandler: @escaping (NSNumber?) -> Void) {
+    @objc
+    static func adjustRequestAppTrackingAuthorization(completionHandler: @escaping (NSNumber?) -> Void) {
         instance.adjustRequestAppTrackingAuthorization(completionHandler: completionHandler)
     }
 
@@ -272,7 +287,8 @@ public extension Tapp {
         }
     }
 
-    @objc public static func adjustAppTrackingAuthorizationStatus() -> Int32 {
+    @objc
+    static func adjustAppTrackingAuthorizationStatus() -> Int32 {
         instance.adjustAppTrackingAuthorizationStatus()
     }
 
@@ -280,7 +296,8 @@ public extension Tapp {
         return adjustService?.appTrackingAuthorizationStatus() ?? 0
     }
 
-    @objc public static func adjustUpdateSkanConversionValue(_ value: Int, coarseValue: String?, lockWindow: NSNumber?, completion: @escaping (Error?) -> Void) {
+    @objc
+    static func adjustUpdateSkanConversionValue(_ value: Int, coarseValue: String?, lockWindow: NSNumber?, completion: @escaping (Error?) -> Void) {
         instance.adjustUpdateSkanConversionValue(value,
                                                coarseValue: coarseValue,
                                                lockWindow: lockWindow,
@@ -298,9 +315,9 @@ public extension Tapp {
     }
 
     @objc
-    public static func adjustVerifyAppStorePurchase(transactionId: String,
+    static func adjustVerifyAppStorePurchase(transactionId: String,
                                              productId: String,
-                                                    completion: @escaping (AdjustPurchaseVerificationResult?) -> Void) {
+                                             completion: @escaping (AdjustPurchaseVerificationResult?) -> Void) {
         instance.adjustVerifyAppStorePurchase(transactionId: transactionId,
                                             productId: productId,
                                             completion: completion)
@@ -318,7 +335,8 @@ public extension Tapp {
                                                       completion: completion)
     }
 
-    @objc public static func adjustVerifyAndTrackAppStorePurchase(with event: AdjustEvent, completion: @escaping (AdjustPurchaseVerificationResult?) -> Void) {
+    @objc
+    static func adjustVerifyAndTrackAppStorePurchase(with event: AdjustEvent, completion: @escaping (AdjustPurchaseVerificationResult?) -> Void) {
         instance.adjustVerifyAndTrackAppStorePurchase(with: event, completion: completion)
     }
 

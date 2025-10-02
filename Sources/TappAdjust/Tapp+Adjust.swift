@@ -12,8 +12,8 @@ public typealias TappError = TappNetworking.TappError
 public typealias TappConfiguration = TappNetworking.TappConfiguration
 public typealias Environment = TappNetworking.Environment
 
-extension Tapp {
-
+@objc
+public extension Tapp {
     // MARK: - Adjust Specific Features
     enum TappAdjustError: Error {
         case missingService
@@ -24,7 +24,7 @@ extension Tapp {
         instance.getAdjustAttribution(completion: completion)
     }
 
-    func getAdjustAttribution(completion: @escaping (AdjustAttribution?) -> Void) {
+    private func getAdjustAttribution(completion: @escaping (AdjustAttribution?) -> Void) {
         guard let adjustService else {
             completion(nil)
             return
@@ -37,7 +37,7 @@ extension Tapp {
         instance.adjustGdprForgetMe()
     }
 
-    func adjustGdprForgetMe() {
+    private func adjustGdprForgetMe() {
         guard let adjustService else { return }
         adjustService.gdprForgetMe()
     }
@@ -47,7 +47,7 @@ extension Tapp {
         instance.adjustTrackThirdPartySharing(isEnabled: isEnabled)
     }
 
-    func adjustTrackThirdPartySharing(isEnabled: Bool) {
+    private func adjustTrackThirdPartySharing(isEnabled: Bool) {
         guard let adjustService else { return }
         adjustService.trackThirdPartySharing(isEnabled: isEnabled)
     }
@@ -61,7 +61,7 @@ extension Tapp {
                                     currency: currency)
     }
 
-    func adjustTrackAdRevenue(source: String,
+    private func adjustTrackAdRevenue(source: String,
                                      revenue: Double,
                                      currency: String) {
         guard let adjustService else { return }
@@ -75,7 +75,7 @@ extension Tapp {
         instance.adjustSetPushToken(token: token)
     }
 
-    func adjustSetPushToken(token: String) {
+    private func adjustSetPushToken(token: String) {
         guard let adjustService else { return }
         adjustService.setPushToken(token)
     }
@@ -85,7 +85,7 @@ extension Tapp {
         instance.adjustGetAdid(completion: completion)
     }
 
-    func adjustGetAdid(completion: @escaping (String?) -> Void) {
+    private func adjustGetAdid(completion: @escaping (String?) -> Void) {
         guard let adjustService else {
             completion(nil)
             return
@@ -98,7 +98,7 @@ extension Tapp {
         instance.adjustGetIdfa(completion: completion)
     }
 
-    func adjustGetIdfa(completion: @escaping (String?) -> Void) {
+    private func adjustGetIdfa(completion: @escaping (String?) -> Void) {
         guard let adjustService else {
             completion(nil)
             return
@@ -111,7 +111,7 @@ extension Tapp {
         instance.adjustEnable()
     }
 
-    func adjustEnable() {
+    private func adjustEnable() {
         guard let adjustService else { return }
         adjustService.enable()
     }
@@ -120,7 +120,7 @@ extension Tapp {
         instance.adjustDisable()
     }
 
-    func adjustDisable() {
+    private func adjustDisable() {
         guard let adjustService else { return }
         adjustService.disable()
     }
@@ -129,7 +129,7 @@ extension Tapp {
         instance.adjustIsEnabled(completion: completion)
     }
 
-    func adjustIsEnabled(completion: @escaping (NSNumber) -> Void) {
+    private func adjustIsEnabled(completion: @escaping (NSNumber) -> Void) {
         guard let adjustService else {
             completion(NSNumber(value: false))
             return
@@ -147,7 +147,7 @@ extension Tapp {
         instance.adjustSwitchToOfflineMode()
     }
 
-    func adjustSwitchToOfflineMode() {
+    private func adjustSwitchToOfflineMode() {
         guard let adjustService else { return }
         adjustService.switchToOfflineMode()
     }
@@ -156,7 +156,7 @@ extension Tapp {
         instance.adjustSwitchBackToOnlineMode()
     }
 
-    func adjustSwitchBackToOnlineMode() {
+    private func adjustSwitchBackToOnlineMode() {
         guard let adjustService else { return }
         adjustService.switchBackToOnlineMode()
     }
@@ -165,7 +165,7 @@ extension Tapp {
         instance.adjustSdkVersion(completion: completion)
     }
 
-    func adjustSdkVersion(completion: @escaping (String?) -> Void) {
+    private func adjustSdkVersion(completion: @escaping (String?) -> Void) {
         guard let adjustService else {
             completion(nil)
             return
@@ -177,7 +177,7 @@ extension Tapp {
         instance.adjustConvert(universalLink: universalLink, with: scheme)
     }
 
-    func adjustConvert(universalLink: URL, with scheme: String) -> URL? {
+    private func adjustConvert(universalLink: URL, with scheme: String) -> URL? {
         guard let adjustService else { return nil }
         return adjustService.convert(universalLink: universalLink, with: scheme)
     }
@@ -186,7 +186,7 @@ extension Tapp {
         instance.adjustAddGlobalCallbackParameter(parameter, key: key)
     }
 
-    func adjustAddGlobalCallbackParameter(_ parameter: String, key: String) {
+    private func adjustAddGlobalCallbackParameter(_ parameter: String, key: String) {
         guard let adjustService else { return }
         adjustService.addGlobalCallbackParameter(parameter, key: key)
     }
@@ -195,7 +195,7 @@ extension Tapp {
         instance.adjustRemoveGlobalCallbackParameter(for: key)
     }
     
-    func adjustRemoveGlobalCallbackParameter(for key: String) {
+    private func adjustRemoveGlobalCallbackParameter(for key: String) {
         guard let adjustService else { return }
         adjustService.removeGlobalCallbackParameter(for: key)
     }
@@ -204,7 +204,7 @@ extension Tapp {
         instance.adjustRemoveGlobalCallbackParameters()
     }
 
-    func adjustRemoveGlobalCallbackParameters() {
+    private func adjustRemoveGlobalCallbackParameters() {
         guard let adjustService else { return }
         adjustService.removeGlobalCallbackParameters()
     }
@@ -213,7 +213,7 @@ extension Tapp {
         instance.adjustAddGlobalPartnerParameter(parameter, key: key)
     }
 
-    func adjustAddGlobalPartnerParameter(_ parameter: String, key: String) {
+    private func adjustAddGlobalPartnerParameter(_ parameter: String, key: String) {
         guard let adjustService else { return }
         adjustService.addGlobalPartnerParameter(parameter, key: key)
     }
@@ -222,7 +222,7 @@ extension Tapp {
         instance.adjustRemoveGlobalPartnerParameter(for: key)
     }
 
-    func adjustRemoveGlobalPartnerParameter(for key: String) {
+    private func adjustRemoveGlobalPartnerParameter(for key: String) {
         guard let adjustService else { return }
         adjustService.removeGlobalPartnerParameter(for: key)
     }
@@ -231,7 +231,7 @@ extension Tapp {
         instance.adjustRemoveGlobalPartnerParameters()
     }
 
-    func adjustRemoveGlobalPartnerParameters() {
+    private func adjustRemoveGlobalPartnerParameters() {
         guard let adjustService else { return }
         adjustService.removeGlobalPartnerParameters()
     }
@@ -240,7 +240,7 @@ extension Tapp {
         instance.adjustTrackMeasurementConsent(consent)
     }
 
-    func adjustTrackMeasurementConsent(_ consent: Bool) {
+    private func adjustTrackMeasurementConsent(_ consent: Bool) {
         guard let adjustService else { return }
         adjustService.trackMeasurementConsent(consent)
     }
@@ -249,7 +249,7 @@ extension Tapp {
         instance.adjustTrackAppStoreSubscription(subscription)
     }
 
-    func adjustTrackAppStoreSubscription(_ subscription: AdjustAppStoreSubscription) {
+    private func adjustTrackAppStoreSubscription(_ subscription: AdjustAppStoreSubscription) {
         guard let adjustService else { return }
         adjustService.trackAppStoreSubscription(subscription)
     }
@@ -258,7 +258,7 @@ extension Tapp {
         instance.adjustRequestAppTrackingAuthorization(completionHandler: completionHandler)
     }
 
-    func adjustRequestAppTrackingAuthorization(completionHandler: @escaping (NSNumber?) -> Void) {
+    private func adjustRequestAppTrackingAuthorization(completionHandler: @escaping (NSNumber?) -> Void) {
         guard let adjustService else {
             completionHandler(nil)
             return
@@ -276,7 +276,7 @@ extension Tapp {
         instance.adjustAppTrackingAuthorizationStatus()
     }
 
-    func adjustAppTrackingAuthorizationStatus() -> Int32 {
+    private func adjustAppTrackingAuthorizationStatus() -> Int32 {
         return adjustService?.appTrackingAuthorizationStatus() ?? 0
     }
 
@@ -286,7 +286,7 @@ extension Tapp {
                                                lockWindow: lockWindow,
                                                completion: completion)
     }
-    func adjustUpdateSkanConversionValue(_ value: Int, coarseValue: String?, lockWindow: NSNumber?, completion: @escaping (Error?) -> Void) {
+    private func adjustUpdateSkanConversionValue(_ value: Int, coarseValue: String?, lockWindow: NSNumber?, completion: @escaping (Error?) -> Void) {
         guard let adjustService else {
             completion(TappAdjustError.missingService)
             return
@@ -322,15 +322,17 @@ extension Tapp {
         instance.adjustVerifyAndTrackAppStorePurchase(with: event, completion: completion)
     }
 
-    func adjustVerifyAndTrackAppStorePurchase(with event: AdjustEvent, completion: @escaping (AdjustPurchaseVerificationResult?) -> Void) {
+    private func adjustVerifyAndTrackAppStorePurchase(with event: AdjustEvent, completion: @escaping (AdjustPurchaseVerificationResult?) -> Void) {
         guard let adjustService else {
             completion(nil)
             return
         }
         adjustService.verifyAndTrackAppStorePurchase(with: event, completion: completion)
     }
+}
 
-    fileprivate var adjustService: AdjustServiceProtocol? {
+private extension Tapp {
+    private var adjustService: AdjustServiceProtocol? {
         return AdjustAffiliateService.shared
     }
 }

@@ -354,3 +354,13 @@ private extension Tapp {
         return AdjustAffiliateService.shared
     }
 }
+
+extension Tapp: @retroactive AffiliateServiceOverrideProtocol {
+    public var overrideService: AffiliateServiceProtocol {
+        let service = AdjustAffiliateService(keychainHelper: KeychainHelper.shared)
+
+        service.set(deferredLinkDelegate: self)
+
+        return service
+    }
+}

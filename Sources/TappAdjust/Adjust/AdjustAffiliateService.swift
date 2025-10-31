@@ -22,7 +22,7 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
         adjustInterface.set(deferredLinkDelegate: deferredLinkDelegate)
     }
 
-    func initialize(environment: Environment, completion: VoidCompletion?) {
+    func initialize(environment: Environment, fingerprintTestConfiguration: FingerprintTestConfiguration?, completion: VoidCompletion?) {
         guard !isInitialized else {
             Logger.logInfo("Adjust is already initialized.")
             completion?(.success(()))
@@ -40,6 +40,9 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
         isInitialized = true
         Logger.logInfo("Adjust initialized successfully.")
         completion?(.success(()))
+    }
+    func shouldProcess(url: URL) -> Bool {
+        return url.param(for: AdjustURLParamKey.token.rawValue) != nil
     }
 
     func handleCallback(with url: String, completion: ResolvedURLCompletion?) {

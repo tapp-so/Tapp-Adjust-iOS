@@ -78,7 +78,6 @@ final class AdjustInterface: NSObject, AdjustInterfaceProtocol {
                 return
             }
             Adjust.processDeeplink(deepLink)
-            Logger.logInfo("Adjust notified of the incoming URL: \(url)")
             completion?(Result.success(resolvedURL))
         }
     }
@@ -94,13 +93,6 @@ final class AdjustInterface: NSObject, AdjustInterfaceProtocol {
     func getAttribution(completion: @escaping (AdjustAttribution?) -> Void)
     {
         Adjust.attribution { attribution in
-            if let attribution = attribution {
-                Logger.logInfo("Attribution: \(attribution)")
-            } else {
-                let error =
-                TappError.unknownError(details: "No attribution available.")
-                Logger.logError(error)
-            }
             completion(AdjustAttribution(adjAttribution: attribution))
         }
     }
@@ -114,12 +106,9 @@ final class AdjustInterface: NSObject, AdjustInterfaceProtocol {
             let thirdPartySharing = ADJThirdPartySharing(
                 isEnabled: NSNumber(value: isEnabled))
         else {
-            let error = TappError.unknownError(details: "Failed to create ADJThirdPartySharing object.")
-            Logger.logError(error)
             return
         }
         Adjust.trackThirdPartySharing(thirdPartySharing)
-        Logger.logInfo("Third-party sharing set to: \(isEnabled).")
     }
 
     func trackAdRevenue(source: String,
@@ -128,52 +117,27 @@ final class AdjustInterface: NSObject, AdjustInterfaceProtocol {
         if let adRevenue = ADJAdRevenue(source: source) {
             adRevenue.setRevenue(revenue, currency: currency)
             Adjust.trackAdRevenue(adRevenue)
-            Logger.logInfo("Tracked ad revenue for \(source).")
-        } else {
-            let error = TappError.unknownError(details:
-                    "Failed to create ADJAdRevenue object for source: \(source)."
-            )
-            Logger.logError(error)
         }
     }
 
     func setPushToken(_ token: String) {
         Adjust.setPushTokenAs(token)
-        Logger.logInfo("Push token set: \(token)")
     }
 
     func getAdid(completion: @escaping (String?) -> Void) {
         Adjust.adid { adid in
-            if let adid = adid {
-                Logger.logInfo("ADID: \(adid)")
-            } else {
-                let error = TappError.unknownError(details: "No ADID available.")
-                Logger.logError(error)
-            }
             completion(adid)
         }
     }
 
     func getIdfa(completion: @escaping (String?) -> Void) {
         Adjust.idfa { idfa in
-            if let idfa = idfa {
-                Logger.logInfo("IDFA: \(idfa)")
-            } else {
-                let error = TappError.unknownError(details: "No IDFA available.")
-                Logger.logError(error)
-            }
             completion(idfa)
         }
     }
 
     func getIdfv(completion: @escaping (String?) -> Void) {
         Adjust.idfv { idfv in
-            if let idfv = idfv {
-                Logger.logInfo("IDFV: \(idfv)")
-            } else {
-                let error = TappError.unknownError(details: "No IDFV available.")
-                Logger.logError(error)
-            }
             completion(idfv)
         }
     }
@@ -259,12 +223,9 @@ final class AdjustInterface: NSObject, AdjustInterfaceProtocol {
             transactionId: transactionId, productId: productId)
         {
             Adjust.verifyAppStorePurchase(purchase) { result in
-                Logger.logInfo("Purchase verification result: \(result)")
                 completion(AdjustPurchaseVerificationResult(adjResult: result))
             }
         } else {
-            let error = TappError.unknownError(details: "Failed to create ADJAppStorePurchase object.")
-            Logger.logError(error)
             completion(nil)
         }
     }

@@ -4,6 +4,8 @@ import TappNetworking
 import Tapp
 
 final class AdjustAffiliateService: AdjustServiceProtocol {
+    var delegate: AnyObject?
+    
     fileprivate(set) var isInitialized = false
 
     static let shared = AdjustAffiliateService(keychainHelper: KeychainHelper())
@@ -22,9 +24,8 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
         adjustInterface.set(deferredLinkDelegate: deferredLinkDelegate)
     }
 
-    func initialize(environment: Environment, fingerprintTestConfiguration: FingerprintTestConfiguration?, completion: VoidCompletion?) {
+    func initialize(environment: Environment, brandedURL: URL?, completion: VoidCompletion?) {
         guard !isInitialized else {
-            Logger.logInfo("Adjust is already initialized.")
             completion?(.success(()))
             return
         }
@@ -38,7 +39,7 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
                                    environment: environment)
 
         isInitialized = true
-        Logger.logInfo("Adjust initialized successfully.")
+        print("TappSDK: Adjust initialized successfully.")
         completion?(.success(()))
     }
     func shouldProcess(url: URL) -> Bool {
@@ -47,7 +48,6 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
 
     func handleCallback(with url: String, completion: ResolvedURLCompletion?) {
         guard let incomingURL = URL(string: url) else {
-            Logger.logError(TappError.invalidURL)
             return
         }
 
@@ -56,19 +56,9 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
 
     func handleEvent(eventId: String, authToken: String?) {
         guard !eventId.isEmpty else {
-            let error = TappError.missingParameters(details: "Event ID is empty.")
-            Logger.logError(error)
             return
         }
-
-        if adjustInterface.trackEvent(eventID: eventId) {
-            Logger.logInfo("Tracked event on Adjust: \(eventId)")
-        } else {
-            let error = TappError.apiError(message:
-                                            "Could not create ADJEvent with eventId \(eventId).",
-                                           endpoint: "")
-            Logger.logError(error)
-        }
+        _ = adjustInterface.trackEvent(eventID: eventId)
     }
 }
 

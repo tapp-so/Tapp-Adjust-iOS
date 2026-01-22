@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tapp-so/Tapp-iOS.git",
       "state" : {
-        "revision" : "3b9b9c3d62d398c67a8d63f36d2397dc347900ba",
-        "version" : "1.0.95"
+        "revision" : "f6209dc9207a6d6817f2bdfcf7e78c32031eb722",
+        "version" : "1.0.96"
       }
     },
     {
@@ -32,8 +32,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tapp-so/Tapp-Networking-iOS.git",
       "state" : {
-        "revision" : "fd90b7999f267e27971adf3865deffda6231e466",
-        "version" : "1.0.95"
+        "revision" : "32d09b4a31dc217bc7c0d9bdaabdebb9e31f41d0",
+        "version" : "1.0.96"
       }
     }
   ],

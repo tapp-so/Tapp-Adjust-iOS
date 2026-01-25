@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/tapp-so/Tapp-iOS.git",
       "state" : {
-        "revision" : "65a6428566111210781aaf8b3813d9826c42ef24",
-        "version" : "1.0.97"
+        "revision" : "f98cf4ac3f67c9fbf1058b1076d1a71b82b2a004",
+        "version" : "1.0.98"
       }
     },
     {

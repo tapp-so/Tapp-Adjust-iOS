@@ -25,13 +25,16 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
     }
 
     func initialize(environment: Environment, brandedURL: URL?, completion: VoidCompletion?) {
+        let context = "Initialization (Adjust)"
         guard !isInitialized else {
             completion?(.success(()))
             return
         }
 
         guard let token = keychainHelper.config?.appToken else {
-            completion?(Result.failure(AffiliateServiceError.missingToken))
+            let error = AffiliateServiceError.missingToken
+            completion?(Result.failure(error))
+            TappLog.logError(error, environment: environment, context: context)
             return
         }
 
@@ -39,11 +42,18 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
                                    environment: environment)
 
         isInitialized = true
-        print("TappSDK: Adjust initialized successfully.")
+        TappLog.logInfo(message: "Adjust SDK initialized", environment: environment, context: context)
         completion?(.success(()))
     }
+
     func shouldProcess(url: URL) -> Bool {
-        return url.param(for: AdjustURLParamKey.token.rawValue) != nil
+        let value = url.param(for: AdjustURLParamKey.token.rawValue) != nil
+
+        TappLog.logInfo(message: "Should process URL(\(url)): \(value)",
+                        environment: keychainHelper.currentEnvironment,
+                        context: "Should Process URL")
+
+        return value
     }
 
     func handleCallback(with url: String, completion: ResolvedURLCompletion?) {
@@ -58,6 +68,7 @@ final class AdjustAffiliateService: AdjustServiceProtocol {
         guard !eventId.isEmpty else {
             return
         }
+
         _ = adjustInterface.trackEvent(eventID: eventId)
     }
 }

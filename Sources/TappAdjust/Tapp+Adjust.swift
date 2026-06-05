@@ -19,14 +19,6 @@ public extension Tapp {
         case missingService
     }
 
-    static func getAdjustAttribution() async throws -> AdjustAttribution? {
-        try await withCheckedThrowingContinuation { continuation in
-            getAdjustAttribution { attribution in
-                continuation.resume(returning: attribution)
-            }
-        }
-    }
-
     @objc
     static func getAdjustAttribution(completion: @escaping (AdjustAttribution?) -> Void) {
         instance.getAdjustAttribution(completion: completion)
@@ -88,14 +80,6 @@ public extension Tapp {
         adjustService.setPushToken(token)
     }
 
-    static func adjustGetAdid() async throws -> String? {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustGetAdid { adid in
-                continuation.resume(returning: adid)
-            }
-        }
-    }
-
     @objc
     static func adjustGetAdid(completion: @escaping (String?) -> Void) {
         instance.adjustGetAdid(completion: completion)
@@ -107,14 +91,6 @@ public extension Tapp {
             return
         }
         adjustService.getAdid(completion: completion)
-    }
-
-    static func adjustGetIdfa() async throws -> String? {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustGetIdfa { idfa in
-                continuation.resume(returning: idfa)
-            }
-        }
     }
 
     @objc
@@ -148,14 +124,6 @@ public extension Tapp {
     private func adjustDisable() {
         guard let adjustService else { return }
         adjustService.disable()
-    }
-
-    static func adjustIsEnabled() async throws -> NSNumber {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustIsEnabled { enabled in
-                continuation.resume(returning: enabled)
-            }
-        }
     }
 
     @objc
@@ -196,14 +164,6 @@ public extension Tapp {
     private func adjustSwitchBackToOnlineMode() {
         guard let adjustService else { return }
         adjustService.switchBackToOnlineMode()
-    }
-
-    static func adjustSdkVersion() async throws -> String? {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustSdkVersion { version in
-                continuation.resume(returning: version)
-            }
-        }
     }
 
     @objc
@@ -309,14 +269,6 @@ public extension Tapp {
         adjustService.trackAppStoreSubscription(subscription)
     }
 
-    static func adjustRequestAppTrackingAuthorization() async throws -> NSNumber? {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustRequestAppTrackingAuthorization { value in
-                continuation.resume(returning: value)
-            }
-        }
-    }
-
     @objc
     static func adjustRequestAppTrackingAuthorization(completionHandler: @escaping (NSNumber?) -> Void) {
         instance.adjustRequestAppTrackingAuthorization(completionHandler: completionHandler)
@@ -345,14 +297,6 @@ public extension Tapp {
         return adjustService?.appTrackingAuthorizationStatus() ?? 0
     }
 
-    static func adjustUpdateSkanConversionValue(_ value: Int, coarseValue: String?, lockWindow: NSNumber?) async throws -> Error? {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustUpdateSkanConversionValue(value, coarseValue: coarseValue, lockWindow: lockWindow) { error in
-                continuation.resume(returning: error)
-            }
-        }
-    }
-
     @objc
     static func adjustUpdateSkanConversionValue(_ value: Int, coarseValue: String?, lockWindow: NSNumber?, completion: @escaping (Error?) -> Void) {
         instance.adjustUpdateSkanConversionValue(value,
@@ -369,15 +313,6 @@ public extension Tapp {
                                                 coarseValue: coarseValue,
                                                 lockWindow: lockWindow,
                                                 completion: completion)
-    }
-
-    static func adjustVerifyAppStorePurchase(transactionId: String,
-                                             productId: String) async throws -> AdjustPurchaseVerificationResult? {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustVerifyAppStorePurchase(transactionId: transactionId, productId: productId) { result in
-                continuation.resume(returning: result)
-            }
-        }
     }
 
     @objc
@@ -401,14 +336,6 @@ public extension Tapp {
                                                       completion: completion)
     }
 
-    func adjustVerifyAndTrackAppStorePurchase(with event: AdjustEvent) async throws -> AdjustPurchaseVerificationResult? {
-        try await withCheckedThrowingContinuation { continuation in
-            adjustVerifyAndTrackAppStorePurchase(with: event) { result in
-                continuation.resume(returning: result)
-            }
-        }
-    }
-
     @objc
     static func adjustVerifyAndTrackAppStorePurchase(with event: AdjustEvent, completion: @escaping (AdjustPurchaseVerificationResult?) -> Void) {
         instance.adjustVerifyAndTrackAppStorePurchase(with: event, completion: completion)
@@ -420,6 +347,81 @@ public extension Tapp {
             return
         }
         adjustService.verifyAndTrackAppStorePurchase(with: event, completion: completion)
+    }
+}
+
+public extension Tapp {
+    static func getAdjustAttribution() async throws -> AdjustAttribution? {
+        try await withCheckedThrowingContinuation { continuation in
+            getAdjustAttribution { attribution in
+                continuation.resume(returning: attribution)
+            }
+        }
+    }
+
+    static func adjustVerifyAndTrackAppStorePurchase(with event: AdjustEvent) async throws -> AdjustPurchaseVerificationResult? {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustVerifyAndTrackAppStorePurchase(with: event) { result in
+                continuation.resume(returning: result)
+            }
+        }
+    }
+
+    static func adjustGetIdfa() async throws -> String? {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustGetIdfa { idfa in
+                continuation.resume(returning: idfa)
+            }
+        }
+    }
+
+    static func adjustGetAdid() async throws -> String? {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustGetAdid { adid in
+                continuation.resume(returning: adid)
+            }
+        }
+    }
+
+    static func adjustSdkVersion() async throws -> String? {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustSdkVersion { version in
+                continuation.resume(returning: version)
+            }
+        }
+    }
+
+    static func adjustRequestAppTrackingAuthorization() async throws -> NSNumber? {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustRequestAppTrackingAuthorization { value in
+                continuation.resume(returning: value)
+            }
+        }
+    }
+
+    static func adjustUpdateSkanConversionValue(_ value: Int, coarseValue: String?, lockWindow: NSNumber?) async throws -> Error? {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustUpdateSkanConversionValue(value, coarseValue: coarseValue, lockWindow: lockWindow) { error in
+                continuation.resume(returning: error)
+            }
+        }
+    }
+
+    static func adjustVerifyAppStorePurchase(transactionId: String,
+                                             productId: String) async throws -> AdjustPurchaseVerificationResult? {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustVerifyAppStorePurchase(transactionId: transactionId, productId: productId) { result in
+                continuation.resume(returning: result)
+            }
+        }
+    }
+
+    static func adjustIsEnabled() async throws -> NSNumber {
+        try await withCheckedThrowingContinuation { continuation in
+            adjustIsEnabled { enabled in
+                continuation.resume(returning: enabled)
+            }
+        }
     }
 }
 

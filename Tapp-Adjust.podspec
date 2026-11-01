@@ -1,16 +1,16 @@
 Pod::Spec.new do |spec|
   spec.name          = 'Tapp-Adjust'
-  spec.version       = '1.1.25'
+  spec.version       = '1.1.26'
   spec.license       = { :type => 'BSD' }
   spec.homepage      = 'https://github.com/tapp-so/Tapp-Adjust-iOS'
   spec.authors       = { 'Alex Stergiou' => 'alex@tapp.so' }
   spec.summary       = 'Tapp+Adjust'
-  spec.source        = { :git => 'https://github.com/tapp-so/Tapp-Adjust-iOS.git', :tag => '1.1.25' }
+  spec.source        = { :git => 'https://github.com/tapp-so/Tapp-Adjust-iOS.git', :tag => '1.1.26' }
   spec.module_name   = 'TappAdjust'
   spec.swift_version = '5.7'
   spec.license       = { :type => 'MIT', :file => 'LICENSE.md' }
 
-  spec.ios.deployment_target  = '13.0'
+  spec.ios.deployment_target  = '15.0'
 
   spec.source_files       = 'Sources/**/*.swift'
   spec.ios.source_files   = 'Sources/**/*.swift'
@@ -18,7 +18,7 @@ Pod::Spec.new do |spec|
   spec.framework      = 'SystemConfiguration'
   spec.ios.framework  = 'Foundation'
 
-  spec.dependency 'Tapp'
-  spec.dependency 'Tapp-Networking'
+  spec.dependency 'Tapp', '>= 1.1.23'
+  spec.dependency 'Tapp-Networking', '>= 1.1.7'
   spec.dependency 'Adjust'
 end

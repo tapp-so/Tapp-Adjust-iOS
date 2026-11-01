@@ -7,7 +7,7 @@ let package = Package(
     name: "TappAdjust",
     platforms: [
        .macOS(.v13),
-       .iOS(.v13),
+       .iOS(.v15),
     ],
     products: [
         // Products define the executables and libraries a package produces, making them visible to other packages.
@@ -17,8 +17,8 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/adjust/ios_sdk.git", exact: "5.0.1"),
-        .package(url: "https://github.com/tapp-so/Tapp-Networking-iOS.git", exact: "1.1.6"),
-        .package(url: "https://github.com/tapp-so/Tapp-iOS.git", exact: "1.1.22"),
+        .package(url: "https://github.com/tapp-so/Tapp-Networking-iOS.git", exact: "1.1.7"),
+        .package(url: "https://github.com/tapp-so/Tapp-iOS.git", exact: "1.1.23"),
     ],
 
     targets: [
@@ -37,3 +37,4 @@ let package = Package(
         ),
     ]
 )
+
